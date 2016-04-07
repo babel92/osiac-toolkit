@@ -298,8 +298,8 @@ def Statement(l,out):
         Match(l,',')
         dest=Operand(l,out)
         out.newInstruction(ins,src[0],dest[0],src[1],dest[1])
-        if src[0]>0 and dest[0]>0:
-            print("Syntax error: (%d): %s\n"%(l.getLineNo(),"One operand must be a register"))
+        if src[0]>0 and dest[0]>0 and src[0]!=6:
+            print("Syntax error: (%d): %s\n"%(l.getLineNo(),"At least one operand must be a register, unless src is an imm"))
             sys.exit(1)
         if src[0]>3:
             out.append("%04X\n"%src[2])
